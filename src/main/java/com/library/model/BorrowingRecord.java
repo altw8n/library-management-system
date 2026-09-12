@@ -13,7 +13,6 @@ public class BorrowingRecord {
             String userId,
             String isbn,
             LocalDate borrowedAt,
-            LocalDate returnedAt,
             LocalDate dueDate
     ) {
         this.userId = userId;
