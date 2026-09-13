@@ -2,8 +2,8 @@ package com.library.model.user;
 
 public class Student extends User {
 
-    public Student(String name, String userId, String email) {
-        super(name, userId, email);
+    public Student(String userId, String name, String email) {
+        super(userId, name, email);
     }
 
     @Override

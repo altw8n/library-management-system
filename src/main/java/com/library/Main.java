@@ -12,31 +12,11 @@ import com.library.ui.Console;
 public class Main {
 
     public static void main(String[] args) {
-
-        BookRepository bookRepository =
-                new BookRepositoryImpl();
-
-        UserRepository userRepository =
-                new UserRepositoryImpl();
-
-        LibraryService libraryService =
-                new LibraryService(
-                        bookRepository,
-                        userRepository
-                );
-
-        BorrowingService borrowingService =
-                new BorrowingService(
-                        bookRepository,
-                        userRepository
-                );
-
-        Console console =
-                new Console(
-                        libraryService,
-                        borrowingService
-                );
-
+        BookRepository bookRepository = new BookRepositoryImpl();
+        UserRepository userRepository = new UserRepositoryImpl();
+        LibraryService libraryService = new LibraryService(bookRepository, userRepository);
+        BorrowingService borrowingService = new BorrowingService(bookRepository, userRepository);
+        Console console = new Console(libraryService, borrowingService);
         console.start();
     }
 }

@@ -82,4 +82,19 @@ public class BorrowingService {
     public List<BorrowingRecord> getBorrowingHistory() {
         return List.copyOf(history);
     }
+
+    public int getActiveBorrowingsCount() {
+        return (int) history.stream().filter(record -> !record.isReturned()).count();
+    }
+
+    public int getOverdueBooksCount() {
+        return getOverdueBooks().size();
+    }
+
+    public List<BorrowingRecord> getUserBorrowings(String userId) {
+        return history
+                .stream()
+                .filter(record -> record.getUserId().equals(userId) && !record.isReturned())
+                .toList();
+    }
 }

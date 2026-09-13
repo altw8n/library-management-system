@@ -54,4 +54,30 @@ public class LibraryService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
     }
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public int getTotalBooks() {
+        return bookRepository.findAll().size();
+    }
+
+    public int getAvailableBooks() {
+        long cnt = bookRepository.findAll().stream().filter(Book::isAvailable).count();
+        return (int) cnt;
+    }
+
+    public int getBorrowedBooks() {
+        long cnt = bookRepository.findAll().stream().filter(book -> !book.isAvailable()).count();
+        return (int) cnt;
+    }
+
+    public int getTotalUsers() {
+        return userRepository.findAll().size();
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }
